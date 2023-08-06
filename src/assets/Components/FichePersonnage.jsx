@@ -60,7 +60,6 @@ const FichePersonnage = () => {
                       alt={comic.title}
                     />
                     <h2>{comic.title}</h2>
-                    <p>{comic.description}</p>
                   </li>
                 </div>
               </Link>
