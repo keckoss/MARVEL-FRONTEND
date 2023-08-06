@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Marveloading from "../img/marvel-loading.gif";
 import Cookies from "js-cookie";
+import config from "./config";
 
 const FichePersonnage = () => {
   const { id } = useParams();
