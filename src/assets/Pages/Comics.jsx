@@ -3,6 +3,7 @@ import axios from "axios";
 import Marveloading from "../img/marvel-loading.gif";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import config from "../Components/config";
 
 function Comics() {
   const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ function Comics() {
     try {
       // Envoyer une requête POST au serveur pour ajouter le comics aux favoris de l'utilisateur
       await axios.post(
-        `${backendUrl}/favoriscomics`,
+        `${config.backendUrl}/favoriscomics`,
         {
           id: id,
           add: !favorisList.includes(id), // Passer "add" à true s'il n'est pas encore dans les favoris, sinon à false pour le supprimer des favoris.
@@ -59,7 +60,7 @@ function Comics() {
       try {
         const skip = (page - 1) * perPage; // Calcul du nombre de résultats à ignorer pour afficher la page actuelle
         const response = await axios.get(
-          `${backendUrl}/comics?title=${search}&limit=${perPage}&skip=${skip}`
+          `${config.backendUrl}/comics?title=${search}&limit=${perPage}&skip=${skip}`
         );
         setData(response.data.results);
         setIsLoading(false);
