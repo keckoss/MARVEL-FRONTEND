@@ -1,0 +1,454 @@
+@import url("https://fonts.googleapis.com/css2?family=Marvel:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+/* icones */
+
+.favorite::before {
+  font-family: "Material Icons";
+  content: "favorite"; /* Remplacez "favorite" par le nom de l'icône que vous voulez utiliser */
+  font-size: 30px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: #ee181e;
+}
+.notfavorite::before {
+  font-family: "Material Icons";
+  content: "favorite_border"; /* Remplacez "favorite" par le nom de l'icône que vous voulez utiliser */
+  font-size: 30px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: #ee181e;
+}
+
+/* styles principaux */
+body {
+  font-family: "Marvel", sans-serif;
+  background-color: lightgrey;
+}
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+.globalcontain {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loading {
+  margin: 0px auto;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 100% de la hauteur de la fenêtre du navigateur */
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #282c34;
+  padding: 10px 20px;
+  color: white;
+}
+.logoimg {
+  width: 100px;
+  height: auto;
+}
+.header div {
+  display: flex;
+  align-items: center;
+}
+.header span {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+.buttonheader {
+  border: 1px solid white;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 10px;
+}
+.header a:hover {
+  transform: scale(1.1); /* Ajout de l'effet d'agrandissement au survol */
+  animation-delay: 500ms;
+}
+/* PERSONNAGES */
+.charalist ul {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.charadetail {
+  display: flex;
+  width: 300px;
+  height: 350px;
+  border-radius: 20px;
+  background-color: white;
+  position: relative;
+}
+.charadetail:hover {
+  transform: scale(1.1); /* Ajout de l'effet d'agrandissement au survol */
+  animation-delay: 500ms;
+}
+
+.charadetail li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.charadetail img {
+  width: 250px;
+  height: 250px;
+}
+/* FICHE PERSONNAGE */
+.ficheperso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ficheperso img {
+  width: 30%;
+  height: 100%;
+}
+.description-text {
+  font-size: 20px;
+}
+.footperso {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.footperso h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+/* Styles pour le conteneur de recherche */
+.search-container {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Style pour l'input de recherche */
+.search-container {
+  display: flex;
+  align-items: center;
+  max-width: 600px; /* Ajustez la largeur selon vos besoins */
+  margin: 20px auto;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Style pour l'input de recherche */
+.search-container input[type="text"] {
+  flex: 1;
+  border: none;
+  width: 250px;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  background-color: transparent;
+}
+/*favoris*/
+/* Div contenant les favoris */
+.favoris-container {
+  display: flex;
+  gap: 40px;
+}
+
+/* Section des favoris Comics */
+.comics-favoris {
+  flex: 1;
+}
+
+.comics-favoris h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.comics-favoris ul {
+  list-style: none;
+  padding: 0;
+}
+
+.comics-favoris li {
+  margin-bottom: 20px;
+}
+
+.comics-favoris img {
+  width: 100%;
+  max-width: 150px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.comics-favoris h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.comics-favoris p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 0;
+}
+
+/* Section des favoris Personnages */
+.personnages-favoris {
+  flex: 1;
+}
+
+.personnages-favoris h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.personnages-favoris ul {
+  list-style: none;
+  padding: 0;
+}
+
+.personnages-favoris li {
+  margin-bottom: 20px;
+}
+
+.personnages-favoris img {
+  width: 100%;
+  max-width: 150px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.personnages-favoris h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.personnages-favoris p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 0;
+}
+
+/* Liens */
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+.pagination {
+  margin-top: 30px;
+}
+/* Signup.css */
+
+/* Main container style */
+.signupform {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f1f1f1; /* Use a light background color */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Input and label styles */
+.signupform label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.signupform input[type="email"],
+.signupform input[type="text"],
+.signupform input[type="password"],
+.signupform input[type="checkbox"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: #fff; /* White background for inputs */
+  border: 1px solid #ccc; /* Add a border for a clean look */
+  transition: border-color 0.3s ease-in-out;
+}
+
+.signupform input[type="email"]:focus,
+.signupform input[type="text"]:focus,
+.signupform input[type="password"]:focus,
+.signupform input[type="checkbox"]:focus {
+  outline: none;
+  border-color: #6e81e7; /* Highlight input on focus */
+}
+
+/* Button style */
+.signupform button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #6e81e7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.signupform button[type="submit"]:hover {
+  background-color: #5d6ad0;
+}
+
+.signupform button[type="submit"]:active {
+  background-color: #4c58bb;
+}
+
+.signupform button[type="submit"]:focus {
+  outline: none;
+}
+
+/* Error message style */
+.signupform .error-message {
+  color: #e74c3c;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Additional styles for the form */
+.signupform {
+  /* Adjust form styles to fit your site's design */
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.signupform label {
+  color: #333;
+}
+
+/* Login.css */
+
+/* Main container style */
+.loginform {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f1f1f1; /* Use a light background color */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Input and label styles */
+.loginform label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.loginform input[type="email"],
+.loginform input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: #fff; /* White background for inputs */
+  border: 1px solid #ccc; /* Add a border for a clean look */
+  transition: border-color 0.3s ease-in-out;
+}
+
+.loginform input[type="email"]:focus,
+.loginform input[type="password"]:focus {
+  outline: none;
+  border-color: #6e81e7; /* Highlight input on focus */
+}
+
+/* Button style */
+.loginform button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #6e81e7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.loginform button[type="submit"]:hover {
+  background-color: #5d6ad0;
+}
+
+.loginform button[type="submit"]:active {
+  background-color: #4c58bb;
+}
+
+.loginform button[type="submit"]:focus {
+  outline: none;
+}
+
+/* Error message style */
+.loginform .error-message {
+  color: #e74c3c;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* responsivos */
+@media (min-width: 680px) {
+  .header .burger {
+    display: none;
+  }
+}
+@media (max-width: 680px) {
+  .header .menudesktop {
+    display: none;
+    background-color: blue;
+  }
+  .header .burger {
+    font-family: "Material Icons";
+    content: "favorite"; /* Remplacez "favorite" par le nom de l'icône que vous voulez utiliser */
+    font-size: 30px;
+  }
+  .header .burger {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Styles pour l'icône du burger lorsqu'elle est ouverte */
+  .header .burger.open {
+    color: #ff0000; /* Vous pouvez changer la couleur d'icône pour indiquer qu'elle est ouverte */
+  }
+}
