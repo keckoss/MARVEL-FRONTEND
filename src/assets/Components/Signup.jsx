@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import config from "./config";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/signup",
+        `${config.backendUrl}/signup`,
         formData
       );
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import config from "./config";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,10 +26,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/login",
-        formData
-      );
+      const response = await axios.post(`${config.backendUrl}/login`, formData);
 
       setErrorMessage("");
       setSuccessMessage("Connexion réussie !");
