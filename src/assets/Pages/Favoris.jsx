@@ -47,7 +47,7 @@ function Favoris() {
     const fetchFavorisIDs = async () => {
       try {
         const response = await axios.get(
-          "https://site--marvel-backend--54hcj7vln9rf.code.run:3000/favorisids",
+          "https://site--marvel-backend--54hcj7vln9rf.code.run/favorisids",
           {
             headers: {
               Authorization: `Bearer ${token}`,
