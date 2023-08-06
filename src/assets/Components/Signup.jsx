@@ -36,10 +36,8 @@ const Signup = () => {
       setSuccessMessage(`Merci pour votre inscription, ${formData.username}!`);
       setSubmitted(true);
       if (response.data.token) {
-        Cookies.set("token", response.data.token, { expires: 7 }); // Save token for 7 days
+        Cookies.set("token", response.data.token, { expires: 7 }); // garder le token 7j
       }
-
-      // Vous pouvez effectuer d'autres traitements avec les données de la réponse ici
     } catch (error) {
       setSuccessMessage("");
       setSubmitted(true);

@@ -17,7 +17,7 @@ const FicheComics = () => {
 
   useEffect(() => {
     axios
-      .get(`https://site--marvel-backend--54hcj7vln9rf.code.run/comic/${id}`)
+      .get(`${config.backendUrl}/comic/${id}`)
       .then((response) => {
         const selectedComic = response.data;
         setComic(selectedComic);
@@ -29,7 +29,7 @@ const FicheComics = () => {
   }, [id]);
 
   useEffect(() => {
-    // Update the cookie whenever the favorisList changes
+    // Update du cookie quand la favlist change
     Cookies.set("favorisList", JSON.stringify(favorisList));
   }, [favorisList]);
 
@@ -37,7 +37,7 @@ const FicheComics = () => {
     try {
       // Envoyer une requête POST au serveur pour ajouter le comic aux favoris de l'utilisateur
       await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/favoriscomics",
+        `${config.backendUrl}/favoriscomics`,
         {
           id: id,
           add: !favorisList.includes(id), // Passer "add" à true s'il n'est pas encore dans les favoris, sinon à false pour le supprimer des favoris.
@@ -73,7 +73,7 @@ const FicheComics = () => {
     );
   }
 
-  // Function to check if the comic is already in favorites
+  // verifier si comic dans fav
   const isComicInFavorites = (id) => {
     return favorisList.includes(id);
   };
@@ -86,7 +86,6 @@ const FicheComics = () => {
         alt={comic.name}
       />
       <div className="ficheperso">
-        {/* Button to add/remove from favorites */}
         <button onClick={() => handleAddToFavorite(comic._id)}>
           {isComicInFavorites(comic._id)
             ? "Retirer des favoris"

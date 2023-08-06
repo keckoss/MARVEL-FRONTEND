@@ -89,7 +89,7 @@ function Favoris() {
     fetchDataForFavorites();
   }, [favorisPersonnagesIDs, favorisComicsIDs]);
 
-  // Function to remove a favorite comic from the database and update the state and cookie
+  // enlever le comic de la bdd et maj
   const removeFavoriteComic = async (comicId) => {
     try {
       const response = await axios.post(
@@ -105,13 +105,13 @@ function Favoris() {
         }
       );
 
-      // If the comic is successfully removed from the database, update the state to remove it from the page
+      // update du state pour le tej de la page
       if (response.status === 200) {
         setFavorisComicsData((prevData) =>
           prevData.filter((comic) => comic._id !== comicId)
         );
 
-        // Remove the comicId from the favorisList cookie as well
+        // tej aussi du cookie
         const favorisListCookie = Cookies.get("favorisList");
         if (favorisListCookie) {
           const parsedFavorisList = JSON.parse(favorisListCookie);
@@ -126,7 +126,7 @@ function Favoris() {
     }
   };
 
-  // Function to remove a favorite character from the database and update the state and cookie
+  // enlever de la db et du cookie
   const removeFavoriteCharacter = async (characterId) => {
     try {
       const response = await axios.post(
@@ -142,13 +142,13 @@ function Favoris() {
         }
       );
 
-      // If the character is successfully removed from the database, update the state to remove it from the page
+      // comme en haut
       if (response.status === 200) {
         setFavorisPersonnagesData((prevData) =>
           prevData.filter((character) => character._id !== characterId)
         );
 
-        // Remove the characterId from the favorisList cookie as well
+        // comme en haut
         const favorisListCookie = Cookies.get("favorisList");
         if (favorisListCookie) {
           const parsedFavorisList = JSON.parse(favorisListCookie);

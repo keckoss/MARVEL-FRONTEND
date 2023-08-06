@@ -17,7 +17,7 @@ const FichePersonnage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://site--marvel-backend--54hcj7vln9rf.code.run/comics/${id}`)
+      .get(`${config.backendUrl}/comics/${id}`)
       .then((response) => {
         const selectedPersonnage = response.data;
         setPersonnage(selectedPersonnage);
@@ -42,7 +42,7 @@ const FichePersonnage = () => {
     try {
       // Envoyer une requête POST au serveur pour ajouter le personnage aux favoris de l'utilisateur
       await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/favorischaracter",
+        `${config.backendUrl}/favorischaracter`,
         {
           id: id,
           add: !isPersonnageInFavorites(id), // Passer "add" à true s'il n'est pas encore dans les favoris, sinon à false pour le supprimer des favoris.

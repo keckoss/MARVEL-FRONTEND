@@ -12,7 +12,6 @@ function Comics() {
   const [page, setPage] = useState(1);
   const perPage = 9; // Nombre de comics à afficher par page
   const token = Cookies.get("token");
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   // Récupérer la liste des favoris depuis le cookie lors du chargement initial de la page
   const initialFavorisList = Cookies.get("favorisList")
