@@ -2,6 +2,7 @@ import axios from "axios";
 import Marveloading from "../img/marvel-loading.gif";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import config from "../Components/config";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--marvel-backend--54hcj7vln9rf.code.run/characters?name=${""}`
+          `${config.backendUrl}/characters?name=${""}`
         );
         setData(response.data.results);
         setIsLoading(false);

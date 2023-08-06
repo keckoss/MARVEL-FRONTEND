@@ -3,6 +3,7 @@ import axios from "axios";
 import Marveloading from "../img/marvel-loading.gif";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import config from "../Components/config";
 
 function Favoris() {
   const [favorisPersonnagesIDs, setFavorisPersonnagesIDs] = useState([]);
@@ -15,7 +16,7 @@ function Favoris() {
   const fetchPersonnageData = async (personnageId) => {
     try {
       const response = await axios.get(
-        `https://site--marvel-backend--54hcj7vln9rf.code.run/comics/${personnageId}`
+        `${config.backendUrl}/comics/${personnageId}`
       );
       return response.data; // Retourner les données du personnage
     } catch (error) {
@@ -30,9 +31,7 @@ function Favoris() {
   // Fonction pour obtenir les données d'un comic depuis l'API
   const fetchComicData = async (comicId) => {
     try {
-      const response = await axios.get(
-        `https://site--marvel-backend--54hcj7vln9rf.code.run/comic/${comicId}`
-      );
+      const response = await axios.get(`${config.backendUrl}/comic/${comicId}`);
       return response.data; // Retourner les données du comic
     } catch (error) {
       console.error(
@@ -46,14 +45,11 @@ function Favoris() {
   useEffect(() => {
     const fetchFavorisIDs = async () => {
       try {
-        const response = await axios.get(
-          "https://site--marvel-backend--54hcj7vln9rf.code.run/favorisids",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`${config.backendUrl}/favorisids`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setFavorisPersonnagesIDs(response.data.favorisPersonnagesIDs);
         setFavorisComicsIDs(response.data.favorisComicsIDs);
       } catch (error) {
@@ -97,7 +93,7 @@ function Favoris() {
   const removeFavoriteComic = async (comicId) => {
     try {
       const response = await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/favoriscomics",
+        `${config.backendUrl}/favoriscomics`,
         {
           id: comicId,
           add: false,
@@ -134,7 +130,7 @@ function Favoris() {
   const removeFavoriteCharacter = async (characterId) => {
     try {
       const response = await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/favorischaracter",
+        `${config.backendUrl}/favorischaracter`,
         {
           id: characterId,
           add: false,

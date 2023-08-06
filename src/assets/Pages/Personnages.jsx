@@ -3,6 +3,7 @@ import axios from "axios";
 import Marveloading from "../img/marvel-loading.gif";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import config from "../Components/config";
 
 function Personnages() {
   const [data, setData] = useState([]);
@@ -27,7 +28,7 @@ function Personnages() {
     try {
       // Envoyer une requête POST au serveur pour ajouter le personnage aux favoris de l'utilisateur
       await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/favorischaracter",
+        `${config.backendUrl}/favorischaracter`,
         {
           id: id,
           add: !favorisList.includes(id), // Passer "add" à true s'il n'est pas encore dans les favoris, sinon à false pour le supprimer des favoris.
@@ -58,7 +59,7 @@ function Personnages() {
       try {
         const skip = (page - 1) * perPage; // Calcul du nombre de résultats à ignorer pour afficher la page actuelle
         const response = await axios.get(
-          `https://site--marvel-backend--54hcj7vln9rf.code.run/characters?name=${search}&limit=${perPage}&skip=${skip}`
+          `${config.backendUrl}/characters?name=${search}&limit=${perPage}&skip=${skip}`
         );
         setData(response.data.results);
         setIsLoading(false);
