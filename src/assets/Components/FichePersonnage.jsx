@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Marveloading from "../img/marvel-loading.gif";
+import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const FichePersonnage = () => {
@@ -17,7 +18,7 @@ const FichePersonnage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://site--marvel-backend--54hcj7vln9rf.code.run/comics/${id}`)
+      .get(`https://site--marvel-backend--54hcj7vln9rf.code.run/comics/comics/${id}`)
       .then((response) => {
         const selectedPersonnage = response.data;
         setPersonnage(selectedPersonnage);
@@ -28,24 +29,14 @@ const FichePersonnage = () => {
       });
   }, [id]);
 
-  useEffect(() => {
-    // Mettre à jour le cookie avec la liste des favoris à chaque changement de l'état favorisList
-    Cookies.set("favorisList", JSON.stringify(favorisList));
-  }, [favorisList]);
-
-  // Vérifier si l'ID du personnage est déjà dans les favoris
-  const isPersonnageInFavorites = (id) => {
-    return favorisList.includes(id);
-  };
-
   const handleAddToFavorite = async (id) => {
     try {
       // Envoyer une requête POST au serveur pour ajouter le personnage aux favoris de l'utilisateur
       await axios.post(
-        "https://site--marvel-backend--54hcj7vln9rf.code.run/favorischaracter",
+        "https://site--marvel-backend--54hcj7vln9rf.code.run/comics/favorischaracter",
         {
           id: id,
-          add: !isPersonnageInFavorites(id), // Passer "add" à true s'il n'est pas encore dans les favoris, sinon à false pour le supprimer des favoris.
+          add: !favorisList.includes(id), // Passer "add" à true s'il n'est pas encore dans les favoris, sinon à false pour le supprimer des favoris.
         },
         {
           headers: {
@@ -55,11 +46,14 @@ const FichePersonnage = () => {
       );
 
       // Mettre à jour la liste des favoris localement
-      if (!isPersonnageInFavorites(id)) {
+      if (!favorisList.includes(id)) {
         setFavorisList([...favorisList, id]);
       } else {
         setFavorisList(favorisList.filter((favoriId) => favoriId !== id));
       }
+
+      // Mettre à jour le cookie avec la liste des favoris (after the state update)
+      Cookies.set("favorisList", JSON.stringify(favorisList));
     } catch (error) {
       console.error(
         "Une erreur est survenue lors de l'ajout aux favoris :",
@@ -78,18 +72,35 @@ const FichePersonnage = () => {
     );
   }
 
+  // Function to check if the character is already in favorites
+  const isCharacterInFavorites = (id) => {
+    return favorisList.includes(id);
+  };
+
   return (
     <div className="globalcontain">
       <div className="ficheperso">
-        <h2>{personnage.name}</h2>
+        {/* Button to add/remove from favorites */}
+        <button
+          onClick={() => handleAddToFavorite(personnage._id)}
+          className={
+            isCharacterInFavorites(personnage._id)
+              ? "favorite"
+              : "notfavorite"
+          }
+        >
+          {isCharacterInFavorites(personnage._id) ? "Remove Favorite" : "Add to Favorite"}
+        </button>
+
         <img
           src={`${personnage.thumbnail.path}.${personnage.thumbnail.extension}`}
           alt={personnage.name}
         />
-       
-        <p>{personnage.description}</p>
+
+        <h2>{personnage.name}</h2>
+        <p className="description-text">{personnage.description}</p>
       </div>
-         <div className="footperso">
+      <div className="footperso">
         <h2>Ce personnage apparait dans les comics suivants</h2>
         <div className="charalist">
           <ul>
