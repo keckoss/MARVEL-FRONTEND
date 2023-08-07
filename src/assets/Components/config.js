@@ -1,6 +1,6 @@
 // config.js
 const config = {
-  backendUrl: "http://localhost:3000",
+  backendUrl: "https://site--marvel-backend--54hcj7vln9rf.code.run",
 };
 
 export default config;
