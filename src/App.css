@@ -453,30 +453,3 @@ a {
   font-size: 16px;
   margin: 0;
 }
-
-/* responsivos */
-@media (min-width: 680px) {
-  .header .burger {
-    display: none;
-  }
-}
-@media (max-width: 680px) {
-  .header .menudesktop {
-    display: none;
-    background-color: blue;
-  }
-  .header .burger {
-    font-family: "Material Icons";
-    content: "favorite"; /* Remplacez "favorite" par le nom de l'icône que vous voulez utiliser */
-    font-size: 30px;
-  }
-  .header .burger {
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  /* Styles pour l'icône du burger lorsqu'elle est ouverte */
-  .header .burger.open {
-    color: #ff0000; /* Vous pouvez changer la couleur d'icône pour indiquer qu'elle est ouverte */
-  }
-}

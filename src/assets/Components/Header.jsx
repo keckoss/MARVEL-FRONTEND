@@ -74,25 +74,6 @@ function Header() {
           </Link>
         )}
       </div>
-      <div
-        style={{ position: "relative" }}
-        className="burger"
-        onClick={toggleMenu}
-      >
-        <span class="material-icons-outlined">menu</span>
-        {isOpen && (
-          <ul className="menumobile">
-            <li style={{ color: "#000000" }}>test1</li>
-            <li>test2</li>
-            <li>test3</li>
-            <li>test4</li>
-            <li>test5</li>
-            <li>test6</li>
-
-            {/* Ajoutez autant d'options que nécessaire */}
-          </ul>
-        )}
-      </div>
     </div>
   );
 }
