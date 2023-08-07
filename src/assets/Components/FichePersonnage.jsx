@@ -11,7 +11,7 @@ const FichePersonnage = () => {
 
   useEffect(() => {
     axios
-      .get(`${config.backendUrl}/favoriscomics/${id}`)
+      .get(`https://site--marvel-backend--54hcj7vln9rf.code.run/favoriscomics/${id}`)
       .then((response) => {
         const selectedPersonnage = response.data;
         setPersonnage(selectedPersonnage);
