@@ -10,7 +10,7 @@ const FichePersonnage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/comics/${id}`)
+      .get(`${config.backendUrl}/favoriscomics/${id}`)
       .then((response) => {
         const selectedPersonnage = response.data;
         setPersonnage(selectedPersonnage);
