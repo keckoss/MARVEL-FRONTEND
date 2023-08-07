@@ -171,26 +171,28 @@ function Favoris() {
           <h2>Favoris Comics</h2>
           {favorisComicsData.length > 0 ? (
             <ul>
-              {favorisComicsData.map((comicData) => (
-                <li key={comicData._id}>
-                  <Link
-                    to={`/comics/${comicData._id}`}
-                    className="link comics"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <img
-                      src={`${comicData.thumbnail.path}.${comicData.thumbnail.extension}`}
-                      alt={comicData.title}
-                      style={{ maxWidth: "150px" }}
-                    />
-                    <h3>{comicData.title}</h3>
-                    <p>{comicData.description}</p>
-                  </Link>
-                  <button onClick={() => removeFavoriteComic(comicData._id)}>
-                    Retirer des favoris
-                  </button>
-                </li>
-              ))}
+              <div className="favcardgrid">
+                {favorisComicsData.map((comicData) => (
+                  <li className="favcard" key={comicData._id}>
+                    <Link
+                      to={`/comics/${comicData._id}`}
+                      className="link comics"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <img
+                        src={`${comicData.thumbnail.path}.${comicData.thumbnail.extension}`}
+                        alt={comicData.title}
+                        style={{ maxWidth: "150px" }}
+                      />
+                      <h3>{comicData.title}</h3>
+                      <p>{comicData.description}</p>
+                    </Link>
+                    <button onClick={() => removeFavoriteComic(comicData._id)}>
+                      Retirer des favoris
+                    </button>
+                  </li>
+                ))}
+              </div>
             </ul>
           ) : (
             <p>Aucun comic en favoris</p>
@@ -200,28 +202,32 @@ function Favoris() {
           <h2>Favoris Personnages</h2>
           {favorisPersonnagesData.length > 0 ? (
             <ul>
-              {favorisPersonnagesData.map((personnageData) => (
-                <li key={personnageData._id}>
-                  <Link
-                    to={`/personnages/${personnageData._id}`}
-                    className="link personnages"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <img
-                      src={`${personnageData.thumbnail.path}.${personnageData.thumbnail.extension}`}
-                      alt={personnageData.name}
-                      style={{ maxWidth: "150px" }}
-                    />
-                    <h3>{personnageData.name}</h3>
-                    <p>{personnageData.description}</p>
-                  </Link>
-                  <button
-                    onClick={() => removeFavoriteCharacter(personnageData._id)}
-                  >
-                    Retirer des favoris
-                  </button>
-                </li>
-              ))}
+              <div className="favcardgrid">
+                {favorisPersonnagesData.map((personnageData) => (
+                  <li className="favcard" key={personnageData._id}>
+                    <Link
+                      to={`/personnages/${personnageData._id}`}
+                      className="link personnages"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <img
+                        src={`${personnageData.thumbnail.path}.${personnageData.thumbnail.extension}`}
+                        alt={personnageData.name}
+                        style={{ maxWidth: "150px" }}
+                      />
+                      <h3>{personnageData.name}</h3>
+                      <p>{personnageData.description}</p>
+                    </Link>
+                    <button
+                      onClick={() =>
+                        removeFavoriteCharacter(personnageData._id)
+                      }
+                    >
+                      Retirer des favoris
+                    </button>
+                  </li>
+                ))}
+              </div>
             </ul>
           ) : (
             <p>Aucun personnage en favoris</p>
