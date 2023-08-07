@@ -9,18 +9,7 @@ const FichePersonnage = () => {
   const { id } = useParams();
   const [personnage, setPersonnage] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get(`https://site--marvel-backend--54hcj7vln9rf.code.run/favoriscomics/${id}`)
-      .then((response) => {
-        const selectedPersonnage = response.data;
-        setPersonnage(selectedPersonnage);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Une erreur s'est produite :", error);
-      });
-  }, [id]);
+  
 
   if (!personnage) {
     return (
