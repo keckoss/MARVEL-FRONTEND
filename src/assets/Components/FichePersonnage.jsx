@@ -89,6 +89,32 @@ const FichePersonnage = () => {
        
         <p>{personnage.description}</p>
       </div>
+         <div className="footperso">
+        <h2>Ce personnage apparait dans les comics suivants</h2>
+        <div className="charalist">
+          <ul>
+            {personnage.comics.map((comic) => (
+              <Link
+                to={`/comics/${comic._id}`}
+                className="link personnages"
+                key={comic._id}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <div className="charadetail" key={comic._id}>
+                  <li>
+                    <img
+                      src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                      alt={comic.title}
+                    />
+                    <h2>{comic.title}</h2>
+                    {/* <p>{comic.description}</p> */}
+                  </li>
+                </div>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
