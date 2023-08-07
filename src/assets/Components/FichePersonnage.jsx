@@ -86,13 +86,8 @@ const FichePersonnage = () => {
           src={`${personnage.thumbnail.path}.${personnage.thumbnail.extension}`}
           alt={personnage.name}
         />
-        <button onClick={() => handleAddToFavorite(personnage._id)}>
-          {isPersonnageInFavorites(personnage._id)
-            ? "Retirer des favoris"
-            : "Ajouter aux favoris"}
-        </button>
-
-        {/* <p>{personnage.description}</p> */}
+       
+        <p>{personnage.description}</p>
       </div>
     </div>
   );
